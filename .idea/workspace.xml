@@ -1,13 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8ee36fb3-9d2b-490f-8319-a7920d5e3e72" name="Default Changelist" comment="" />
+    <list default="true" id="8ee36fb3-9d2b-490f-8319-a7920d5e3e72" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ChatClient/chatClient.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ChatClient/src/ru/sapeshkoas/j2/messager/chat/client/ClietnGUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ChatServer/ChatServer.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ChatServer/src/ru/sapeshkoas/j2/messager/chat/server/core/ChatServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ChatServer/src/ru/sapeshkoas/j2/messager/chat/server/gui/ServerGUI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Library/Library.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Network/Network.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Network/src/ru/sapeshkoas/j2/messager/chat/network/ServerSocketThread.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Network/src/ru/sapeshkoas/j2/messager/chat/network/ServerSocketThreadListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Network/src/ru/sapeshkoas/j2/messager/chat/network/SocketThread.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Network/src/ru/sapeshkoas/j2/messager/chat/network/SocketThreadListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1ZhLQscSTQcttPy7e8iGb8eDrFE" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="autoscrollToSource" value="true" />
@@ -16,13 +47,33 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.0" />
-    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
   </component>
-  <component name="RunManager">
+  <component name="RecentsManager">
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="ru.sapeshkoas.j2.messager.chat.network" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.ClietnGUI">
+    <configuration name="ClietnGUI" type="Application" factoryName="Application" singleton="false" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.sapeshkoas.j2.messager.chat.client.ClietnGUI" />
+      <module name="chatClient" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.sapeshkoas.j2.messager.chat.client.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="ru.gb.j2.messager.Main" />
       <module name="j2messager" />
@@ -33,6 +84,30 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ServerGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.sapeshkoas.j2.messager.chat.server.gui.ServerGUI" />
+      <module name="ChatServer" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.sapeshkoas.j2.messager.chat.server.gui.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.ClietnGUI" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.ServerGUI" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ClietnGUI" />
+        <item itemvalue="Application.ServerGUI" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -59,10 +134,57 @@
     </task>
     <servers />
   </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
   <component name="WindowStateProjectService">
-    <state x="249" y="0" key="SettingsEditor" timestamp="1585286398069">
+    <state x="361" y="75" key="#Project_Structure" timestamp="1585312447559">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1585286398069" />
+    <state x="361" y="75" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1585312447559" />
+    <state x="223" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585373061883">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="223" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1585373061883" />
+    <state x="574" y="123" key="#com.intellij.ide.util.MemberChooser" timestamp="1585370633457">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="574" y="123" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1585370633457" />
+    <state x="500" y="197" key="#com.intellij.ide.util.PackageChooserDialog" timestamp="1585322285509">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="500" y="197" key="#com.intellij.ide.util.PackageChooserDialog/0.0.1536.824@0.0.1536.824" timestamp="1585322285509" />
+    <state x="552" y="282" width="482" height="265" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1585322287792">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="552" y="282" width="482" height="265" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1585322287792" />
+    <state x="549" y="171" key="FileChooserDialogImpl" timestamp="1585287811387">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585287811387" />
+    <state width="1342" height="195" key="GridCell.Tab.0.bottom" timestamp="1585374362761">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1342" height="195" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585374362761" />
+    <state width="1342" height="195" key="GridCell.Tab.0.center" timestamp="1585374362760">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1342" height="195" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585374362760" />
+    <state width="1342" height="195" key="GridCell.Tab.0.left" timestamp="1585374362760">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1342" height="195" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585374362760" />
+    <state width="1342" height="195" key="GridCell.Tab.0.right" timestamp="1585374362761">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1342" height="195" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585374362761" />
+    <state x="249" y="0" key="SettingsEditor" timestamp="1585311978187">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1585311978187" />
+    <state x="209" y="40" key="new project wizard" timestamp="1585287731894">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="209" y="40" key="new project wizard/0.0.1536.824@0.0.1536.824" timestamp="1585287731894" />
   </component>
 </project>
