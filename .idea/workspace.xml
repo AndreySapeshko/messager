@@ -2,22 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ee36fb3-9d2b-490f-8319-a7920d5e3e72" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ChatClient/chatClient.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ChatClient/src/ru/sapeshkoas/j2/messager/chat/client/ClietnGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ChatServer/ChatServer.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ChatServer/src/ru/sapeshkoas/j2/messager/chat/server/core/ChatServer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ChatServer/src/ru/sapeshkoas/j2/messager/chat/server/gui/ServerGUI.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Library/Library.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Network/Network.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Network/src/ru/sapeshkoas/j2/messager/chat/network/ServerSocketThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Network/src/ru/sapeshkoas/j2/messager/chat/network/ServerSocketThreadListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Network/src/ru/sapeshkoas/j2/messager/chat/network/SocketThread.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Network/src/ru/sapeshkoas/j2/messager/chat/network/SocketThreadListener.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/log.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChatClient/src/ru/sapeshkoas/j2/messager/chat/client/ClietnGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChatClient/src/ru/sapeshkoas/j2/messager/chat/client/ClietnGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ChatServer/src/ru/sapeshkoas/j2/messager/chat/server/core/ChatServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/ChatServer/src/ru/sapeshkoas/j2/messager/chat/server/core/ChatServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/log.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,6 +21,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1ZhLQscSTQcttPy7e8iGb8eDrFE" />
@@ -132,10 +125,20 @@
       <option name="presentableId" value="Default" />
       <updated>1585286365128</updated>
     </task>
+    <task id="LOCAL-00001" summary="Messanger перед заданием № 6">
+      <created>1585374633865</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1585374633865</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <MESSAGE value="Messanger перед заданием № 6" />
+    <option name="LAST_COMMIT_MESSAGE" value="Messanger перед заданием № 6" />
   </component>
   <component name="WindowStateProjectService">
     <state x="361" y="75" key="#Project_Structure" timestamp="1585312447559">
@@ -158,30 +161,38 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="552" y="282" width="482" height="265" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.824@0.0.1536.824" timestamp="1585322287792" />
+    <state x="436" y="12" key="CommitChangelistDialog2" timestamp="1585374632580">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="436" y="12" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1585374632580" />
     <state x="549" y="171" key="FileChooserDialogImpl" timestamp="1585287811387">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="171" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1585287811387" />
-    <state width="1342" height="195" key="GridCell.Tab.0.bottom" timestamp="1585374362761">
+    <state width="1342" height="195" key="GridCell.Tab.0.bottom" timestamp="1585375708108">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1342" height="195" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585374362761" />
-    <state width="1342" height="195" key="GridCell.Tab.0.center" timestamp="1585374362760">
+    <state width="1342" height="195" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1585375708108" />
+    <state width="1342" height="195" key="GridCell.Tab.0.center" timestamp="1585375708108">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1342" height="195" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585374362760" />
-    <state width="1342" height="195" key="GridCell.Tab.0.left" timestamp="1585374362760">
+    <state width="1342" height="195" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1585375708108" />
+    <state width="1342" height="195" key="GridCell.Tab.0.left" timestamp="1585375708108">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1342" height="195" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585374362760" />
-    <state width="1342" height="195" key="GridCell.Tab.0.right" timestamp="1585374362761">
+    <state width="1342" height="195" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1585375708108" />
+    <state width="1342" height="195" key="GridCell.Tab.0.right" timestamp="1585375708108">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1342" height="195" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585374362761" />
+    <state width="1342" height="195" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1585375708108" />
     <state x="249" y="0" key="SettingsEditor" timestamp="1585311978187">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1585311978187" />
+    <state x="361" y="149" key="Vcs.Push.Dialog.v2" timestamp="1585376351358">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="149" key="Vcs.Push.Dialog.v2/0.0.1536.824@0.0.1536.824" timestamp="1585376351358" />
     <state x="209" y="40" key="new project wizard" timestamp="1585287731894">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

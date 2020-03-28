@@ -57,7 +57,9 @@ public class ClietnGUI extends JFrame implements ActionListener, SocketThreadLis
         tfMessage.addActionListener(this);
         btnSend.addActionListener(this);
         btnLogin.addActionListener(this);
+        btnDisconnect.addActionListener(this);
 
+        panelTop.setVisible(true);
         panelTop.add(tfAddress);
         panelTop.add(tfPort);
         panelTop.add(cbAlwaysOnTop);
@@ -65,6 +67,7 @@ public class ClietnGUI extends JFrame implements ActionListener, SocketThreadLis
         panelTop.add(tfName);
         panelTop.add(btnLogin);
 
+        panelBottom.setVisible(false);
         panelBottom.add(btnDisconnect, BorderLayout.WEST);
         panelBottom.add(tfMessage, BorderLayout.CENTER);
         panelBottom.add(btnSend, BorderLayout.EAST);
@@ -85,6 +88,8 @@ public class ClietnGUI extends JFrame implements ActionListener, SocketThreadLis
             sendMessage();
         } else if (src == btnLogin) {
             connect();
+        } else if (src == btnDisconnect) {
+            socketThread.close();
         }
         else {
             throw new RuntimeException("Unknown sources: " + src);
@@ -154,11 +159,15 @@ public class ClietnGUI extends JFrame implements ActionListener, SocketThreadLis
     @Override
     public void onSocketStop(SocketThread thread) {
         putLog(tfName.getText(), "SocketThread stopped");
+        panelTop.setVisible(true);
+        panelBottom.setVisible(false);
     }
 
     @Override
     public void onSocketReady(SocketThread thread, Socket socket) {
         putLog(tfName.getText(), "SocketThread ready");
+        panelBottom.setVisible(true);
+        panelTop.setVisible(false);
     }
 
     @Override

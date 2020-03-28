@@ -65,7 +65,7 @@ public class ChatServer implements ServerSocketThreadListener, SocketThreadListe
     @Override
     public void onSocketAccepted(ServerSocketThread thread, ServerSocket server, Socket socket) {
         System.out.println("Socket Accepted");
-        new SocketThread(this, "SocketThread " + socket.getInetAddress() + ":" + socket.getPort(), socket);
+        clients.add(new SocketThread(this, "SocketThread " + socket.getInetAddress() + ":" + socket.getPort(), socket));
     }
 
     @Override
@@ -94,7 +94,9 @@ public class ChatServer implements ServerSocketThreadListener, SocketThreadListe
 
     @Override
     public void onReceiveString(SocketThread thread, Socket socket, String msg) {
-        thread.sendMessage(msg);
+        for (int i = 0; i < clients.size(); i++) {
+            clients.get(i).sendMessage(msg);
+        }
     }
 
     @Override
