@@ -1,14 +1,15 @@
 package ru.sapeshkoas.j2.messager.chat.server.gui;
 
 import ru.sapeshkoas.j2.messager.chat.server.core.ChatServer;
+import ru.sapeshkoas.j2.messager.chat.server.core.ChatServerListener;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ServerGUI extends JFrame implements ActionListener {
-    private ChatServer chatServer = new ChatServer();
+public class ServerGUI extends JFrame implements ActionListener, ChatServerListener {
+    private ChatServer chatServer = new ChatServer(this);
     private static final int POS_X = 100;
     private static final int POS_Y = 100;
     private static final int WIGTH = 300;
@@ -21,11 +22,12 @@ public class ServerGUI extends JFrame implements ActionListener {
     public ServerGUI() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setBounds(POS_X, POS_Y,WIGTH, HEIGHT);
-        setResizable(false);
+        setResizable(true);
         setTitle("Chat Server");
         setLayout(new BorderLayout());
         btnStart.addActionListener(this);
         btnStop.addActionListener(this);
+        taLog.setEditable(false);
         JScrollPane scrollLog = new JScrollPane(taLog);
         panelTop.add(btnStart, LEFT_ALIGNMENT);
         panelTop.add(btnStop, RIGHT_ALIGNMENT);
@@ -52,5 +54,19 @@ public class ServerGUI extends JFrame implements ActionListener {
         } else if (src == btnStop) {
             chatServer.stop();
         }
+    }
+
+    @Override
+    public void onChatServerMessage(String str) {
+        if ("".equals(str)) {
+            return;
+        }
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                taLog.append(str + "\n");
+                taLog.setCaretPosition(taLog.getDocument().getLength());
+            }
+        });
     }
 }
