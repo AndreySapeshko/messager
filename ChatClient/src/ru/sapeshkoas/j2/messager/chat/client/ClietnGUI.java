@@ -1,5 +1,6 @@
 package ru.sapeshkoas.j2.messager.chat.client;
 
+import ru.sapeshkoas.j2.messager.chat.library.Library;
 import ru.sapeshkoas.j2.messager.chat.network.SocketThread;
 import ru.sapeshkoas.j2.messager.chat.network.SocketThreadListener;
 
@@ -100,7 +101,7 @@ public class ClietnGUI extends JFrame implements ActionListener, SocketThreadLis
         if (socketThread == null || !socketThread.isAlive()) {
             try {
                 Socket socket = new Socket(tfAddress.getText(), Integer.parseInt(tfPort.getText()));
-                socketThread = new SocketThread(this, socket.getInetAddress() + ":" + socket.getPort(), socket);
+                socketThread = new SocketThread(this, tfName.getText(), socket);
 
             } catch (IOException e) {
                 showException(Thread.currentThread(), e);
@@ -112,23 +113,28 @@ public class ClietnGUI extends JFrame implements ActionListener, SocketThreadLis
 
     private void sendMessage() {
         String msg = tfMessage.getText();
-        String userName = tfName.getText();
+//        String userName = tfName.getText();
         if ("".equals(msg)) {
             return;
         }
 //        putLog(userName, msg);
         tfMessage.setText(null);
         tfMessage.grabFocus();
-        socketThread.sendMessage(userName + ": " + msg);
-        writeLogFile(userName, msg);
+        socketThread.sendMessage(msg);
+//        writeLogFile(userName, msg);
     }
 
-    private void putLog(String userName, String msg) {
+    private void putLog(String msg) {
         if ("".equals(msg)) {
             return;
         }
-        taLog.append(userName + ": " + msg + "\n");
-        taLog.setCaretPosition(taLog.getDocument().getLength());
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                taLog.append(msg + "\n");
+                taLog.setCaretPosition(taLog.getDocument().getLength());
+            }
+        });
     }
 
     private void writeLogFile(String userName, String msg) {
@@ -146,33 +152,36 @@ public class ClietnGUI extends JFrame implements ActionListener, SocketThreadLis
             msg = "Stack Trace is empty";
         } else {
             msg = "Exception in " + t.getName() + " " + exception.getClass().getCanonicalName() +
-                    " " + exception.getMessage() + "\n\t" + ste[0];
+                    " " + exception.getMessage() + "\n\t" + ste[0] + "\n\t" + ste[ste.length-1];
         }
         JOptionPane.showMessageDialog(null, msg, "Exception", JOptionPane.ERROR_MESSAGE);
     }
 
     @Override
     public void onSocketStart(SocketThread thread, Socket socket) {
-        putLog(tfName.getText(), "SocketThread started");
+        putLog("SocketThread started");
     }
 
     @Override
     public void onSocketStop(SocketThread thread) {
-        putLog(tfName.getText(), "SocketThread stopped");
+        putLog("SocketThread stopped");
         panelTop.setVisible(true);
         panelBottom.setVisible(false);
     }
 
     @Override
     public void onSocketReady(SocketThread thread, Socket socket) {
-        putLog(tfName.getText(), "SocketThread ready");
+        putLog("SocketThread ready");
         panelBottom.setVisible(true);
         panelTop.setVisible(false);
+        String login = tfName.getText();
+        String password = new String(pfPassword.getPassword());
+        thread.sendMessage(Library.getAuthRequest(login, password));
     }
 
     @Override
     public void onReceiveString(SocketThread thread, Socket socket, String msg) {
-        putLog(thread.getName(), msg);
+        putLog(msg);
     }
 
     @Override

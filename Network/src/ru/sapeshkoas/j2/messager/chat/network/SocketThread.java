@@ -10,6 +10,7 @@ public class SocketThread extends Thread {
     private String address;
     private String name;
     private DataOutputStream out;
+    private DataInputStream in;
     private Socket socket;
     private SocketThreadListener listener;
 
@@ -25,7 +26,7 @@ public class SocketThread extends Thread {
         listener.onSocketStart(this, socket);
         try {
             out = new DataOutputStream(socket.getOutputStream());
-            DataInputStream in = new DataInputStream(socket.getInputStream());
+            in = new DataInputStream(socket.getInputStream());
             listener.onSocketReady(this, socket);
             while (!isInterrupted()) {
                 String msg = in.readUTF();
@@ -44,7 +45,7 @@ public class SocketThread extends Thread {
             out.writeUTF(msg);
             out.flush();
         } catch (IOException e) {
-            System.out.println("Exception");
+            listener.onSocketException(this, e);
             close();
         }
     }
@@ -52,6 +53,8 @@ public class SocketThread extends Thread {
     public synchronized void close() {
         interrupt();
         try {
+            in.close();
+            out.close();
             socket.close();
         } catch (IOException e) {
             System.out.println("Exception");
