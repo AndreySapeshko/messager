@@ -12,7 +12,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ClietnGUI extends JFrame implements ActionListener, SocketThreadListener {
     private static final int HEAGHT = 300;
@@ -181,7 +183,30 @@ public class ClietnGUI extends JFrame implements ActionListener, SocketThreadLis
 
     @Override
     public void onReceiveString(SocketThread thread, Socket socket, String msg) {
-        putLog(msg);
+        String message = handleIncomingMessage(msg);
+        putLog(message);
+    }
+
+    private String handleIncomingMessage(String msg) {
+        if ("".equals(msg)) {
+            return msg;
+        }
+        String[] partsOfMsg = msg.split(Library.DELIMITER);
+        if (partsOfMsg[0].equals("/auth_accept")) {
+            return partsOfMsg[1] + ", доступ к чату окрыт!";
+        }
+        if (partsOfMsg[0].equals("/auth_denied")) {
+            return "В доступу отказано!";
+        }
+        if (partsOfMsg[0].equals("/msg_format_error")) {
+            return partsOfMsg[0].replaceAll("[/_]", " ") + ": " + msg;
+        }
+        if (partsOfMsg[0].equals("/bcast")) {
+            Date timeMsg = new Date(Long.parseLong(partsOfMsg[1]));
+            SimpleDateFormat df = new SimpleDateFormat("hh:mm");
+            return df.format(timeMsg) + " " + partsOfMsg[2] + ": " + partsOfMsg[3];
+        }
+        return msg;
     }
 
     @Override

@@ -52,7 +52,6 @@ public class ChatServer implements ServerSocketThreadListener, SocketThreadListe
     public void onServerStart(ServerSocketThread thread) {
         putLog("ServerSocketThread started");
         SqlClient.connect();
-        putLog(SqlClient.getNickName("andre", "123"));
     }
 
     @Override
