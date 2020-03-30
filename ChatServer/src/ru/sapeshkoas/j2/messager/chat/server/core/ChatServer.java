@@ -106,7 +106,22 @@ public class ChatServer implements ServerSocketThreadListener, SocketThreadListe
     public void onSocketReady(SocketThread thread, Socket socket) {
         putLog(thread.getName() + " ready");
         clients.add(thread);
-
+        ClientThread client = (ClientThread) thread;
+        new Thread() {
+            @Override
+            public void run() {
+                try {
+                    sleep(120000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                if (!client.getIsAuthorized()) {
+                    listener.onChatServerMessage("authorization time expired: " + client.getName());
+                    client.sendMessage(Library.getBroadcast("Server", "authorization time expired"));
+                    client.close();
+                }
+            }
+        }.start();
     }
 
     @Override

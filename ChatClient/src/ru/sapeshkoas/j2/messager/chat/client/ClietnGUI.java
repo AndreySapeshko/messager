@@ -182,7 +182,7 @@ public class ClietnGUI extends JFrame implements ActionListener, SocketThreadLis
         panelTop.setVisible(false);
         String login = tfName.getText();
         String password = new String(pfPassword.getPassword());
-//        thread.sendMessage(Library.getAuthRequest(login, password));
+        thread.sendMessage(Library.getAuthRequest(login, password));
     }
 
     @Override
