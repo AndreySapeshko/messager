@@ -14,11 +14,13 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 public class ClietnGUI extends JFrame implements ActionListener, SocketThreadListener {
     private static final int HEAGHT = 300;
     private static final int WIDTH = 400;
+    private static final String WINDOW_TITLE = "Chat client";
     private final JPanel panelTop = new JPanel(new GridLayout(2, 3));
     private final JTextField tfAddress = new JTextField("127.0.0.1");
     private final JTextField tfPort = new JTextField("8189");
@@ -45,7 +47,7 @@ public class ClietnGUI extends JFrame implements ActionListener, SocketThreadLis
 
     public ClietnGUI() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Chat client");
+        setTitle(WINDOW_TITLE);
         setResizable(false);
         setLayout(new BorderLayout());
         setLocationRelativeTo(null);
@@ -122,7 +124,7 @@ public class ClietnGUI extends JFrame implements ActionListener, SocketThreadLis
 //        putLog(userName, msg);
         tfMessage.setText(null);
         tfMessage.grabFocus();
-        socketThread.sendMessage(msg);
+        socketThread.sendMessage(Library.getTypeBcastClient(msg));
 //        writeLogFile(userName, msg);
     }
 
@@ -169,6 +171,8 @@ public class ClietnGUI extends JFrame implements ActionListener, SocketThreadLis
         putLog("SocketThread stopped");
         panelTop.setVisible(true);
         panelBottom.setVisible(false);
+        setTitle(WINDOW_TITLE);
+        usersList.setListData(new String[0]);
     }
 
     @Override
@@ -178,35 +182,38 @@ public class ClietnGUI extends JFrame implements ActionListener, SocketThreadLis
         panelTop.setVisible(false);
         String login = tfName.getText();
         String password = new String(pfPassword.getPassword());
-        thread.sendMessage(Library.getAuthRequest(login, password));
+//        thread.sendMessage(Library.getAuthRequest(login, password));
     }
 
     @Override
     public void onReceiveString(SocketThread thread, Socket socket, String msg) {
-        String message = handleIncomingMessage(msg);
-        putLog(message);
-    }
 
-    private String handleIncomingMessage(String msg) {
-        if ("".equals(msg)) {
-            return msg;
-        }
         String[] partsOfMsg = msg.split(Library.DELIMITER);
-        if (partsOfMsg[0].equals("/auth_accept")) {
-            return partsOfMsg[1] + ", доступ к чату окрыт!";
-        }
-        if (partsOfMsg[0].equals("/auth_denied")) {
-            return "В доступу отказано!";
-        }
-        if (partsOfMsg[0].equals("/msg_format_error")) {
-            return partsOfMsg[0].replaceAll("[/_]", " ") + ": " + msg;
-        }
-        if (partsOfMsg[0].equals("/bcast")) {
+        if (partsOfMsg[0].equals(Library.AUTH_ACCEPT)) {
+            setTitle(WINDOW_TITLE + " entered with nickname: " + partsOfMsg[1]);
+            putLog(partsOfMsg[1] + ", доступ к чату окрыт!");
+
+        } else if (partsOfMsg[0].equals(Library.AUTH_DENIED)) {
+            putLog("В доступe отказано!");
+
+        } else if (partsOfMsg[0].equals(Library.MSG_FORMAT_ERROR)) {
+            putLog(partsOfMsg[0].replaceAll("[/_]", " ") + ": " + msg);
+
+        } else if (partsOfMsg[0].equals(Library.TYPE_BROADCAST)) {
             Date timeMsg = new Date(Long.parseLong(partsOfMsg[1]));
             SimpleDateFormat df = new SimpleDateFormat("hh:mm");
-            return df.format(timeMsg) + " " + partsOfMsg[2] + ": " + partsOfMsg[3];
+            putLog(df.format(timeMsg) + " " + partsOfMsg[2] + ": " + partsOfMsg[3]);
+
+        } else if (partsOfMsg[0].equals(Library.USER_LIST)) {
+            String users = msg.substring(Library.USER_LIST.length() + Library.DELIMITER.length());
+            String[] usersArr = users.split(Library.DELIMITER);
+            Arrays.sort(usersArr);
+            usersList.setListData(usersArr);
+
+        } else {
+            throw new RuntimeException("Msg format error: " + msg);
         }
-        return msg;
+
     }
 
     @Override

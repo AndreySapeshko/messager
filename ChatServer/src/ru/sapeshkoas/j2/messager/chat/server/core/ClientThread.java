@@ -9,6 +9,7 @@ import java.net.Socket;
 public class ClientThread extends SocketThread {
     private String nickName;
     private boolean isAuthorized;
+    private boolean isReconnected;
 
     public ClientThread(SocketThreadListener listener, String name, Socket socket) {
         super(listener, name, socket);
@@ -20,6 +21,15 @@ public class ClientThread extends SocketThread {
 
     public boolean getIsAuthorized() {
         return isAuthorized;
+    }
+
+    public boolean getIsReconnected() {
+        return isReconnected;
+    }
+
+    void reconnected() {
+        isReconnected = true;
+        close();
     }
 
     void authAccept(String nickName) {

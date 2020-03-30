@@ -94,13 +94,19 @@ public class ChatServer implements ServerSocketThreadListener, SocketThreadListe
     @Override
     public void onSocketStop(SocketThread thread) {
         putLog(thread.getName() + " stopped");
+        ClientThread client = (ClientThread) thread;
+        if (client.getIsAuthorized() && !client.getIsReconnected()) {
+            sendToAllAuthorizedClients(Library.getBroadcast("Server", client.getNickName() + " disconnect"));
+        }
         clients.remove(thread);
+        sendToAllAuthorizedClients(Library.getUserList(getUsers()));
     }
 
     @Override
     public void onSocketReady(SocketThread thread, Socket socket) {
         putLog(thread.getName() + " ready");
         clients.add(thread);
+
     }
 
     @Override
@@ -124,13 +130,29 @@ public class ChatServer implements ServerSocketThreadListener, SocketThreadListe
         if (nickName == null) {
             putLog("Invalid credentials for user " + login);
             clientThread.authFail();
+        } else {
+
+            ClientThread oldClient = findClientByNickname(nickName);
+            clientThread.authAccept(nickName);
+            if (oldClient == null) {
+                sendToAllAuthorizedClients(Library.getBroadcast("Server", nickName + " connected"));
+            } else {
+                oldClient.reconnected();
+                clients.remove(oldClient);
+            }
         }
-        clientThread.authAccept(nickName);
-        sendToAllAuthorizedClients(Library.getBroadcast("Server", nickName + " connected"));
+
+
+        sendToAllAuthorizedClients(Library.getUserList(getUsers()));
     }
 
     private void handleAuthorizedMessage(ClientThread clientThread, String msg) {
-        sendToAllAuthorizedClients(Library.getBroadcast(clientThread.getNickName(), msg));
+        String[] partsOfMsg = msg.split(Library.DELIMITER);
+        if (partsOfMsg[0].equals(Library.TYPE_BCAST_CLIENT)) {
+            sendToAllAuthorizedClients(Library.getBroadcast(clientThread.getNickName(), partsOfMsg[1]));
+        } else {
+            throw new RuntimeException("Msg format error: " + msg);
+        }
     }
 
     private void sendToAllAuthorizedClients(String msg) {
@@ -141,6 +163,32 @@ public class ChatServer implements ServerSocketThreadListener, SocketThreadListe
             }
             client.sendMessage(msg);
         }
+    }
+
+    private String getUsers() {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < clients.size(); i++) {
+            ClientThread client = (ClientThread) clients.get(i);
+            if (!client.getIsAuthorized()) {
+                continue;
+            } else {
+                sb.append(client.getNickName()).append(Library.DELIMITER);
+            }
+        }
+        return sb.toString();
+    }
+
+    private ClientThread findClientByNickname(String nickname) {
+        for (int i = 0; i < clients.size(); i++) {
+            ClientThread client = (ClientThread) clients.get(i);
+            if (!client.getIsAuthorized()) {
+                continue;
+            }
+            if (client.getNickName().equals(nickname)) {
+                return client;
+            }
+        }
+        return null;
     }
 
     @Override
